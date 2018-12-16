@@ -1,27 +1,36 @@
-$(() => {
-    $("#qq").submit(e => {
-        e.preventDefault();
-        $(" #progress,  .prevent-overlay").removeClass("hide");
+function contact(e) {
+  e.preventDefault();
 
-        // console.log($(e.target).serialize());
-        $.ajax({
-            url: "https://www.wampinfotech.com/php/contact.php",
-            method: "POST",
-            data: $(e.target).serialize(),
-            success: (data, status) => {
-                // console.log(data, status);
-                var object = JSON.parse(data);
-                alert(object.message);
-                if (object.status == "server_error") {
-                    return;
-                }
-            },
-            error: (data, status) => {
-                console.log(data, status);
-            },
-            complete: () => {
-                $(" #progress, .prevent-overlay").addClass("hide");
-            }
+  document.querySelectorAll("#progress, .prevent-overlay").forEach(element => {
+    element.classList.remove("hide");
+  });
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document
+        .querySelectorAll("#progress, .prevent-overlay")
+        .forEach(element => {
+          element.classList.add("hide");
         });
-    });
-});
+      var object = JSON.parse(this.responseText);
+      alert(object.message);
+      //   console.log(this.responseText);
+    }
+  };
+  xhttp.open("POST", "https://www.wampinfotech.com/php/contact.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  let f = e.target;
+  xhttp.send(
+    "name=" +
+      f.name.value.trim() +
+      "&email=" +
+      f.email.value.trim() +
+      "&number=" +
+      f.number.value.trim() +
+      "&company=" +
+      f.company.value.trim() +
+      "&message=" +
+      f.message.value.trim()
+  );
+}

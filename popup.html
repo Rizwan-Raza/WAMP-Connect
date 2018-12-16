@@ -8,130 +8,11 @@
     <title>WAMP Connect</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <style>
-        .html, body {
-            width: 384px;
-            min-height: 180px;
-        }
-        .btn {
-            text-transform: initial;
-  letter-spacing: 0.25px;
-  font-weight: 500;
-  border-radius: 4px;
-        }
-        .btn:hover,
-.btn-large:hover,
-.btn-small:hover {
-  background-color: #dddddd;
-}
-
-        .bg-primary {
-        background-color: #3d85c6 !important;
-
-        }
-        .text-primary {
-        color: #3d85c6;
-    }
-    .m-0 {
-        margin: 0;
-    }
-    .ml-1 {
-        margin-left: 0.5rem;
-    }
-    .p-2 {
-        padding:1rem;
-    }
-    
-.progress {
-  background-color: #bbdeff;
-  height: 6px;
-  border-radius: 0;
-}
-
-.progress-holder {
-    border-radius: 0;
-  margin: 0px;
-  overflow: hidden;
-  margin-bottom: -16px;
-  height: 16px;
-}
-
-.progress-holder .progress {
-  margin: 0;
-  z-index: 4;
-}
-
-.prevent-overlay {
-  background-color: #ffffff40;
-  position: absolute;
-  z-index: 2;
-  cursor: wait;
-}
-
-/* label focus color */
-.input-field input:focus+label,
-.input-field textarea:focus+label {
-  color: #3d85c6 !important;
-}
-
-/* label underline focus color */
-.input-field input:focus,
-.input-field textarea:focus {
-  border-bottom: 1px solid #3d85c6 !important;
-  box-shadow: 0 1px 0 0 #3d85c6 !important;
-}
-
-/* icon prefix focus color */
-.input-field .prefix.active {
-  color: #3d85c6 !important;
-}
-img {
-    width: 32px;
-    margin: -2.5px 5px -2.5px 0px;
-}
-a.btn-floating {
-    transition: all 0.4s ease;
-}
-a.btn-floating:hover {
-  background-color: #eeeeee;
-}
-
-.facebook {
-  background-color: #3b5998;
-}
-.facebook:hover i {
-  color: #3b5998;
-}
-
-.linkedin {
-  background-color: #0077b5;
-}
-.linkedin:hover i {
-    color: #0077b5;
-}
-
-.twitter {
-  background-color: #1da1f2;
-}
-.twitter:hover i {
-  color: #1da1f2;
-}
-
-.instagram {
-  background-color: #e1306c;
-}
-.instagram:hover i {
-  color: #e1306c;
-}
-.pos-rel {
-    position: relative;
-}
-.full {
-    width: 100%;
-    height: 100%;
-}
-    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/brands.css" integrity="sha384-whKHCkwP9f4MyD1vda26+XRyEg2zkyZezur14Kxc784RxUU1E7HvWVYj9EoJnUV7"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/fontawesome.css" integrity="sha384-WK8BzK0mpgOdhCxq86nInFqSWLzR5UAsNg0MGX9aDaIIrFWQ38dGdhwnNCAoXFxL"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="popup.css" />
 </head>
 
 <body>
@@ -141,61 +22,56 @@ a.btn-floating:hover {
                 <div class="indeterminate bg-primary"></div>
             </div>
         </div>
-        <div class="prevent-overlay hide full border-radius-8"></div>
+        <div class="prevent-overlay hide full"></div>
         <div class="modal-content p-2">
             <h4 class="text-primary m-0">
-                <img src="images/WAMP-Logo.png" />
+                <img src="images/WAMP-Logo.png" alt="WAMP InfoTech Logo"/>
                 WAMP Connect <small>(v1.0.0)</small></h4>
-            <form id="qq" name="qq" class="validate">
+            <div class="b-t-1"></div>
+            <form id="qq" name="qq" class="validate" onsubmit="contact(event)">
                 <div class="input-field">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="qq_name" type="text" name="name" required />
-                    <label for="qq_name">Name</label>
+                    <input placeholder="Name" type="text" name="name" required />
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">email</i>
-                    <input id="qq_email" type="email" name="email" required />
-                    <label for="qq_email">Email</label>
+                    <input placeholder="Email" type="email" name="email" required />
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">phone</i>
-                    <input id="qq_number" type="tel" name="number" required minlength="10" maxlength="12" />
-                    <label for="qq_number">Number</label>
+                    <input placeholder="Number" type="tel" name="number" required minlength="10" maxlength="12" />
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">group</i>
-                    <input id="qq_company" type="text" name="company" />
-                    <label for="qq_company">Company (Optional)</label>
+                    <input placeholder="Company (Optional)" type="text" name="company" />
                 </div>
                 <div class="input-field col s12 w-full">
                     <i class="material-icons prefix">message</i>
-                    <textarea id="qq_message" class="materialize-textarea" name="message" data-length="30" required></textarea>
-                    <label for="qq_message">Message</label>
+                    <textarea placeholder="Message" class="materialize-textarea" name="message" data-length="30"
+                        required></textarea>
                 </div>
-                <a target="_blank" href="https://www.facebook.com/wampinfotech" class="waves-effect waves-dark facebook btn-floating left">
-                    <i class="fa fa-facebook"></i>
+                <a target="_blank" href="https://www.facebook.com/wampinfotech" class="waves-effect waves-dark facebook btn-small btn-floating left">
+                    <i class="fab">&#xf39e;</i>
                 </a>
-                <a target="_blank" href="https://twitter.com/WampInfotech" class="waves-effect waves-light twitter btn-floating ml-1 left"
+                <a target="_blank" href="https://twitter.com/WampInfotech" class="waves-effect waves-light twitter btn-small btn-floating ml-1 left"
                     form="qq" name="submit_btn">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fab">&#xf099;</i>
                 </a>
-                <a target="_blank" href="https://www.linkedin.com/company/wampinfotech-pvt-ltd/" class="waves-effect waves-light linkedin btn-floating ml-1 left"
+                <a target="_blank" href="https://www.linkedin.com/company/wampinfotech-pvt-ltd/" class="waves-effect waves-light linkedin btn-small btn-floating ml-1 left"
                     form="qq" name="submit_btn">
-                    <i class="fa fa-linkedin"></i>
+                    <i class="fab">&#xf0e1;</i>
                 </a>
-                <a target="_blank" href="https://www.instagram.com/wampinfotech" class="waves-effect waves-light instagram btn-floating ml-1 left"
+                <a target="_blank" href="https://www.instagram.com/wampinfotech" class="waves-effect waves-light instagram btn-small btn-floating ml-1 left"
                     form="qq" name="submit_btn">
-                    <i class="fa fa-instagram"></i>
+                    <i class="fab">&#xf16d;</i>
                 </a>
-                <button type="submit" class="waves-effect waves-light btn bg-primary ml-1 right" form="qq" name="submit_btn">
+                <button type="submit" class="waves-effect waves-light btn btn-small bg-primary ml-1 right" form="qq" name="submit_btn">
                     Send
                 </button>
                 <br clear="both" />
             </form>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
     <script src="popup.js"></script>
 </body>
 
